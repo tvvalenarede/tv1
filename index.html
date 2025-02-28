@@ -8,24 +8,16 @@
         body {
             margin: 0;
             padding: 20px;
-            background: linear-gradient(rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0.5)),
-                        url('https://example.com/bandeira-brasil.jpg');
-            background-size: cover;
+            background-color: #FFA500;
             font-family: Arial, sans-serif;
         }
 
-        header {
+        .header {
             text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .main-title {
-            color: #009c3b;
+            color: #000;
             font-size: 2.5em;
-            text-shadow: 2px 2px #002776;
+            text-shadow: 2px 2px 4px white;
+            margin-bottom: 20px;
         }
 
         .container {
@@ -34,125 +26,143 @@
         }
 
         .main-content {
-            flex: 3;
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 20px;
+            flex: 2;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px;
             border-radius: 10px;
         }
 
-        .side-buttons {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border: 3px solid black;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: white;
+            overflow: hidden;
         }
 
-        .side-button {
-            padding: 15px;
-            background-color: #FFDF00;
-            border: 2px solid #009C3B;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .registration-box {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-        }
-
-        .chat-box {
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            background-color: #009C3B;
+        .botao-menu {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: black;
             color: white;
-            padding: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .registration-form {
+            background-color: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .chat-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1 class="main-title">TVVALENAREDE REDE SOCIAL 2025</h1>
-    </header>
-
+    <h1 class="header">TVVALENAREDE REDE SOCIAL 2025</h1>
+    
     <div class="container">
         <div class="main-content">
-            <div class="registration-box">
-                <h2>Cadastro (Limite: 50 pessoas)</h2>
-                <form id="registrationForm">
-                    <input type="text" placeholder="Nome" required>
-                    <input type="email" placeholder="E-mail" required>
-                    <input type="password" placeholder="Senha" required>
-                    <input type="file" accept="image/*">
-                    <button type="submit">Cadastrar</button>
-                </form>
+            <div class="profile-photo">
+                <!-- Foto de perfil -->
+                <input type="file" id="fotoPerfil" style="display: none;">
+                <label for="fotoPerfil" style="cursor: pointer;">
+                    <img src="placeholder.jpg" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover;">
+                </label>
             </div>
 
-            <div>
-                <button>Achar Fotos</button>
-                <button>Achar Comentários</button>
+            <div class="registration-form">
+                <h2>Cadastro (50 Vagas)</h2>
+                <input type="text" placeholder="Nome Completo" style="width: 100%; margin: 5px 0; padding: 8px;">
+                <input type="email" placeholder="E-mail" style="width: 100%; margin: 5px 0; padding: 8px;">
+                <input type="password" placeholder="Senha" style="width: 100%; margin: 5px 0; padding: 8px;">
+                <button style="background-color: black; color: white; padding: 10px; width: 100%; margin-top: 10px;">
+                    Cadastrar
+                </button>
             </div>
 
-            <h3>Chat</h3>
-            <div class="chat-box" id="chatBox"></div>
-            <input type="text" placeholder="Digite sua mensagem" id="messageInput">
-            <button onclick="sendMessage()">Enviar</button>
+            <div class="chat-box">
+                <h2>Chat</h2>
+                <div id="mensagens" style="height: 200px; overflow-y: auto;"></div>
+                <input type="text" placeholder="Digite sua mensagem" style="width: 70%; padding: 8px;">
+                <button style="background-color: black; color: white; padding: 8px;">Enviar</button>
+            </div>
         </div>
 
-        <div class="side-buttons">
-            <button class="side-button">1 MADE CENTER</button>
-            <button class="side-button">2 J.E.C.S</button>
-            <button class="side-button">3 BAR DO OSMAR</button>
-            <button class="side-button">4 SERGUIS ALIANÇAS</button>
-            <button class="side-button">5 SERGINHOS PNEUS</button>
-            <button class="side-button">6 CASA 3 IRMÃOS</button>
-            <button class="side-button">7 CASA DO NORDESTINO</button>
-            <button class="side-button">8 FUTEBOL AO VIVO</button>
-            <button class="side-button">9 ARQUIVO TVVALENAREDE</button>
-            <button class="side-button">10 VÍDEOS REELS</button>
-            <button class="side-button">11 FACEBOOK</button>
-            <button class="side-button">12 INSTAGRAM</button>
-            <button class="side-button">13 WHATSAPP</button>
-            <button class="side-button">14 YOUTUBE</button>
+        <div class="sidebar">
+            <button class="botao-menu">MADE CENTER</button>
+            <button class="botao-menu">J.E.C.S</button>
+            <button class="botao-menu">BAR DO OSMAR</button>
+            <button class="botao-menu">SERGIUS ALIANÇAS</button>
+            <button class="botao-menu">SERGINHOS PNEUS</button>
+            <button class="botao-menu">CASA 3 IRMÃOS</button>
+            <button class="botao-menu">CASA DO NORDESTINO</button>
+            <button class="botao-menu">FUTEBOL AO VIVO</button>
+            <button class="botao-menu">ARQUIVO TVVALENAREDE</button>
+            <button class="botao-menu">VÍDEOS REELS</button>
+            <button class="botao-menu">FACEBOOK</button>
+            <button class="botao-menu">INSTAGRAM</button>
+            <button class="botao-menu">WHATSAPP</button>
+            <button class="botao-menu">YOUTUBE</button>
         </div>
     </div>
 
     <script>
-        let users = [];
+        // Contador de cadastros
+        let cadastros = 0;
         
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if(users.length >= 50) {
+        document.querySelector('button').addEventListener('click', function() {
+            if(cadastros >= 50) {
                 alert('Limite de cadastros atingido!');
                 return;
             }
+            cadastros++;
             // Adicionar lógica de cadastro aqui
-            users.push({
-                name: this[0].value,
-                email: this[1].value,
-                password: this[2].value
-            });
-            alert('Cadastro realizado com sucesso!');
-            this.reset();
         });
 
-        function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML += `<p>${input.value}</p>`;
-            input.value = '';
-        }
+        // Upload de foto
+        document.getElementById('fotoPerfil').addEventListener('change', function(e) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.querySelector('.profile-photo img').src = reader.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        // Chat simples
+        document.querySelector('.chat-box button').addEventListener('click', function() {
+            const msg = document.querySelector('.chat-box input').value;
+            const div = document.createElement('div');
+            div.textContent = msg;
+            document.getElementById('mensagens').appendChild(div);
+            document.querySelector('.chat-box input').value = '';
+        });
     </script>
 </body>
 </html>
