@@ -3,102 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVVALENAREDE - Rede Social 2025</title>
+    <title>TVVALENAREDE</title>
     <style>
         body {
             margin: 0;
-            padding: 20px;
-            background-color: #FFA500;
+            padding: 0;
+            background-color: orange;
             font-family: Arial, sans-serif;
         }
 
-        .header {
-            text-align: center;
-            color: #000;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px white;
-            margin-bottom: 20px;
+        header {
+            background-color: darkorange;
             padding: 20px;
-            background-color: rgba(255,255,255,0.3);
-            border-radius: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .main-content {
-            flex: 2;
-            min-width: 300px;
-        }
-
-        .sidebar {
-            flex: 1;
-            background-color: rgba(0,0,0,0.8);
-            padding: 15px;
-            border-radius: 10px;
-            min-width: 250px;
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            font-size: 2.5em;
         }
 
         .profile-section {
+            margin-top: 120px;
             text-align: center;
-            margin-bottom: 30px;
         }
 
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border: 3px solid black;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto;
             background-color: white;
-            overflow: hidden;
-            cursor: pointer;
         }
 
-        .botao-menu {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            background-color: #000;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: transform 0.2s;
-        }
-
-        .botao-menu:hover {
-            transform: scale(1.02);
-        }
-
-        .registration-form {
-            background-color: rgba(255,255,255,0.9);
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
             padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .chat-box {
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            height: 300px;
-            margin-bottom: 20px;
-        }
-
-        input[type="text"], 
-        input[type="email"], 
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
         }
 
         button {
@@ -109,157 +58,103 @@
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar {
-                order: -1;
-                margin-bottom: 20px;
-            }
-            .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
+        .main-buttons {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .link-buttons {
+            background-color: black;
+            color: white;
+            flex: 1 1 200px;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 300px;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 90%;
         }
     </style>
 </head>
 <body>
-    <h1 class="header">TVVALENAREDE REDE SOCIAL 2025</h1>
-    
-    <div class="container">
-        <div class="main-content">
-            <div class="profile-section">
-                <div class="profile-photo">
-                    <input type="file" id="fotoPerfil" accept="image/*" style="display: none;">
-                    <label for="fotoPerfil">
-                        <img src="placeholder.jpg" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover;">
-                    </label>
-                </div>
-                <button onclick="procurarFotos()">Achar Fotos</button>
-                <button onclick="procurarComentarios()">Achar Comentários</button>
-            </div>
+    <header>
+        <h1>TVVALENAREDE REDE SOCIAL DO BRASIL</h1>
+    </header>
 
-            <div class="registration-form">
-                <h2>Cadastro (50 Vagas)</h2>
-                <input type="text" id="nome" placeholder="Nome Completo">
-                <input type="email" id="email" placeholder="E-mail">
-                <input type="password" id="senha" placeholder="Senha">
-                <button id="btnCadastrar" style="background-color: #000; color: white; width: 100%; margin-top: 10px;">
-                    Cadastrar
-                </button>
-                <div id="contadorStatus" style="color: #ff0000; margin-top: 10px;"></div>
-            </div>
+    <div class="profile-section">
+        <div class="profile-photo">Foto do Perfil</div>
+    </div>
 
-            <div class="chat-box">
-                <h2>Chat</h2>
-                <div id="mensagens" style="height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
-                <input type="text" id="mensagem" placeholder="Digite sua mensagem" style="width: 70%; padding: 8px;">
-                <button onclick="enviarMensagem()" style="background-color: #000; color: white;">Enviar</button>
-            </div>
-        </div>
+    <form id="signupForm">
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="password" placeholder="Senha" required>
+        <button type="submit" class="main-buttons">Cadastrar</button>
+    </form>
 
-        <div class="sidebar">
-            <button class="botao-menu">1 MADE CENTER</button>
-            <button class="botao-menu">2 J.E.C.S</button>
-            <button class="botao-menu">3 BAR DO OSMAR</button>
-            <button class="botao-menu">4 SERGIUS ALIANÇAS</button>
-            <button class="botao-menu">5 SERGINHOS PNEUS</button>
-            <button class="botao-menu">6 CASA 3 IRMÃOS</button>
-            <button class="botao-menu">7 CASA DO NORDESTINO</button>
-            <button class="botao-menu">8 FUTEBOL AO VIVO</button>
-            <button class="botao-menu">9 ARQUIVO TVVALENAREDE</button>
-            <button class="botao-menu">10 VÍDEOS REELS</button>
-            <button class="botao-menu">11 FACEBOOK</button>
-            <button class="botao-menu">12 INSTAGRAM</button>
-            <button class="botao-menu">13 WHATSAPP</button>
-            <button class="botao-menu">14 YOUTUBE</button>
-        </div>
+    <div class="buttons-container">
+        <button class="main-buttons" onclick="alert('Enviar Foto')">Enviar Foto</button>
+        <button class="main-buttons" onclick="alert('Enviar Vídeo')">Enviar Vídeo</button>
+        <button class="main-buttons" onclick="alert('Fazer Comentário')">Fazer Comentário</button>
+    </div>
+
+    <div class="buttons-container">
+        <!-- Botões de links -->
+        <button class="link-buttons">MADE CENTER</button>
+        <button class="link-buttons">J.E.C.S</button>
+        <button class="link-buttons">SERGIUS ALIANÇAS</button>
+        <button class="link-buttons">BAR DO OSMAR</button>
+        <button class="link-buttons">CASA 3 IRMÃOS</button>
+        <button class="link-buttons">CASA DP NORDESTINO</button>
+        <button class="link-buttons">SERGINHOS PNEUS</button>
+        <button class="link-buttons">IMOBILIÁRIA DANELLI</button>
+        <button class="link-buttons">FUTEBOL AO VIVO</button>
+        <button class="link-buttons">WEBCOMEDY</button>
+        <button class="link-buttons">FACEBOOK</button>
+        <button class="link-buttons">INSTAGRAM</button>
+        <button class="link-buttons">EVENTOS AO VIVO</button>
+        <button class="link-buttons">YOUTUBE</button>
     </div>
 
     <script>
-        // Sistema de Cadastro
-        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        const LIMITE_CADASTROS = 50;
+        let users = [];
+        const MAX_USERS = 100;
 
-        function atualizarContador() {
-            const vagas = LIMITE_CADASTROS - usuarios.length;
-            document.getElementById('contadorStatus').innerHTML = 
-                `Cadastros: ${usuarios.length}/${LIMITE_CADASTROS}`;
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            if(vagas <= 0) {
-                document.getElementById('btnCadastrar').disabled = true;
-            }
-        }
-
-        document.getElementById('btnCadastrar').addEventListener('click', () => {
-            if(usuarios.length >= LIMITE_CADASTROS) {
+            if(users.length >= MAX_USERS) {
                 alert('Limite de cadastros atingido!');
                 return;
             }
 
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
+            const formData = {
+                name: this.querySelector('input[type="text"]').value,
+                email: this.querySelector('input[type="email"]').value,
+                password: this.querySelector('input[type="password"]').value
+            };
 
-            if(!nome || !email || !senha) {
-                alert('Preencha todos os campos!');
-                return;
-            }
-
-            if(usuarios.some(u => u.email === email)) {
-                alert('E-mail já cadastrado!');
-                return;
-            }
-
-            usuarios.push({
-                nome, email, senha,
-                dataCadastro: new Date().toISOString()
-            });
-
-            localStorage.setItem('usuarios', JSON.stringify(usuarios));
-            atualizarContador();
-            alert('Cadastro realizado!');
-            document.getElementById('nome').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('senha').value = '';
+            users.push(formData);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('Cadastro realizado com sucesso!');
+            this.reset();
+            
+            console.log(users); // Remova isso em produção
         });
 
-        // Sistema de Chat
-        function enviarMensagem() {
-            const mensagem = document.getElementById('mensagem').value;
-            if(mensagem.trim()) {
-                const div = document.createElement('div');
-                div.textContent = mensagem;
-                document.getElementById('mensagens').appendChild(div);
-                document.getElementById('mensagem').value = '';
-                // Adicionar lógica de armazenamento de mensagens aqui
-            }
+        // Carregar usuários existentes
+        if(localStorage.getItem('users')) {
+            users = JSON.parse(localStorage.getItem('users'));
         }
-
-        // Upload de Foto
-        document.getElementById('fotoPerfil').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    document.querySelector('.profile-photo img').src = reader.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Funções de busca
-        function procurarFotos() {
-            alert('Funcionalidade de busca de fotos em desenvolvimento!');
-        }
-
-        function procurarComentarios() {
-            alert('Funcionalidade de busca de comentários em desenvolvimento!');
-        }
-
-        // Inicialização
-        atualizarContador();
     </script>
 </body>
 </html>
