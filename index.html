@@ -3,54 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVVALENAREDE</title>
+    <title>TVVALENAREDE - Rede Social do Brasil</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             background-color: orange;
+            margin: 0;
+            padding: 20px;
             font-family: Arial, sans-serif;
         }
 
         header {
-            background-color: darkorange;
-            padding: 20px;
             text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        h1 {
-            color: white;
-            text-shadow: 2px 2px 4px black;
+        .logo {
             font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .profile-section {
-            margin-top: 120px;
-            text-align: center;
+        .vermelho {
+            color: red;
         }
 
-        .profile-photo {
+        .branco {
+            color: white;
+        }
+
+        .perfil {
             width: 150px;
             height: 150px;
-            border: 3px solid black;
             border-radius: 50%;
-            margin: 0 auto;
-            background-color: white;
+            background-color: #ccc;
+            margin: 20px auto;
+            overflow: hidden;
         }
 
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        button {
+        .botao {
+            background-color: black;
+            color: white;
             padding: 10px 20px;
             margin: 5px;
             border: none;
@@ -58,103 +51,100 @@
             cursor: pointer;
         }
 
-        .main-buttons {
-            background-color: darkblue;
-            color: white;
-        }
-
-        .link-buttons {
-            background-color: black;
-            color: white;
-            flex: 1 1 200px;
-        }
-
-        form {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px auto;
-            width: 300px;
+        .form-cadastro {
+            margin: 20px 0;
         }
 
         input {
-            margin: 5px 0;
+            display: block;
+            margin: 10px 0;
             padding: 8px;
-            width: 90%;
+            width: 250px;
+        }
+
+        .chat {
+            background-color: white;
+            height: 200px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .botoes-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>TVVALENAREDE REDE SOCIAL DO BRASIL</h1>
+        <div class="logo">
+            <span class="vermelho">TVVALENAREDE</span>
+            <span class="branco"> REDE SOCIAL DO BRASIL</span>
+        </div>
+        <div class="perfil"></div>
     </header>
 
-    <div class="profile-section">
-        <div class="profile-photo">Foto do Perfil</div>
+    <div class="form-cadastro">
+        <input type="text" placeholder="Nome" id="nome">
+        <input type="email" placeholder="E-mail" id="email">
+        <input type="password" placeholder="Senha" id="senha">
+        <button class="botao" onclick="cadastrar()">Cadastrar</button>
     </div>
 
-    <form id="signupForm">
-        <input type="text" placeholder="Nome" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="password" placeholder="Senha" required>
-        <button type="submit" class="main-buttons">Cadastrar</button>
-    </form>
+    <button class="botao" onclick="window.location.href='mailto:tvbonani@gmail.com?subject=Envio de Foto'">Enviar Fotos</button>
+    <button class="botao" onclick="window.location.href='mailto:tvbonani@gmail.com?subject=Envio de Vídeo'">Enviar Vídeos</button>
 
-    <div class="buttons-container">
-        <button class="main-buttons" onclick="alert('Enviar Foto')">Enviar Foto</button>
-        <button class="main-buttons" onclick="alert('Enviar Vídeo')">Enviar Vídeo</button>
-        <button class="main-buttons" onclick="alert('Fazer Comentário')">Fazer Comentário</button>
-    </div>
+    <div class="chat" id="chat"></div>
+    <input type="text" placeholder="Comentário" id="comentario">
+    <button class="botao" onclick="enviarComentario()">Enviar Comentário</button>
 
-    <div class="buttons-container">
-        <!-- Botões de links -->
-        <button class="link-buttons">MADE CENTER</button>
-        <button class="link-buttons">J.E.C.S</button>
-        <button class="link-buttons">SERGIUS ALIANÇAS</button>
-        <button class="link-buttons">BAR DO OSMAR</button>
-        <button class="link-buttons">CASA 3 IRMÃOS</button>
-        <button class="link-buttons">CASA DP NORDESTINO</button>
-        <button class="link-buttons">SERGINHOS PNEUS</button>
-        <button class="link-buttons">IMOBILIÁRIA DANELLI</button>
-        <button class="link-buttons">FUTEBOL AO VIVO</button>
-        <button class="link-buttons">WEBCOMEDY</button>
-        <button class="link-buttons">FACEBOOK</button>
-        <button class="link-buttons">INSTAGRAM</button>
-        <button class="link-buttons">EVENTOS AO VIVO</button>
-        <button class="link-buttons">YOUTUBE</button>
-    </div>
+    <div class="botoes-links" id="botoes-links"></div>
 
     <script>
-        let users = [];
-        const MAX_USERS = 100;
+        const links = [
+            {nome: "MADE CENTER", url: "#"},
+            {nome: "J.E.C.S", url: "#"},
+            {nome: "SERGIUS ALIANÇAS", url: "#"},
+            {nome: "BAR DO OSMAR", url: "#"},
+            {nome: "CASA 3 IRMÃOS", url: "#"},
+            {nome: "CASA DP NORDESTINO", url: "#"},
+            {nome: "SERGINHOS PNEUS", url: "#"},
+            {nome: "IMOBILIÁRIA DANELLI", url: "#"},
+            {nome: "FUTEBOL AO VIVO", url: "#"},
+            {nome: "WEBCOMEDY", url: "#"},
+            {nome: "FACEBOOK", url: "#"},
+            {nome: "INSTAGRAM", url: "#"},
+            {nome: "EVENTOS AO VIVO", url: "#"},
+            {nome: "YOUTUBE", url: "#"},
+            {nome: "TIKTOK", url: "#"}
+        ];
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if(users.length >= MAX_USERS) {
-                alert('Limite de cadastros atingido!');
-                return;
-            }
-
-            const formData = {
-                name: this.querySelector('input[type="text"]').value,
-                email: this.querySelector('input[type="email"]').value,
-                password: this.querySelector('input[type="password"]').value
-            };
-
-            users.push(formData);
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            alert('Cadastro realizado com sucesso!');
-            this.reset();
-            
-            console.log(users); // Remova isso em produção
-        });
-
-        // Carregar usuários existentes
-        if(localStorage.getItem('users')) {
-            users = JSON.parse(localStorage.getItem('users'));
+        function cadastrar() {
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            alert(`Cadastro realizado!\nNome: ${nome}\nE-mail: ${email}`);
         }
+
+        function enviarComentario() {
+            const comentario = document.getElementById('comentario').value;
+            const chat = document.getElementById('chat');
+            chat.innerHTML += `<p>${comentario}</p>`;
+            document.getElementById('comentario').value = '';
+        }
+
+        // Criar botões de links
+        const container = document.getElementById('botoes-links');
+        links.forEach(link => {
+            const botao = document.createElement('button');
+            botao.className = 'botao';
+            botao.textContent = link.nome;
+            botao.onclick = () => window.location.href = link.url;
+            container.appendChild(botao);
+        });
     </script>
 </body>
 </html>
