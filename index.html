@@ -1,150 +1,186 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVVALENAREDE - Rede Social do Brasil</title>
+    <title>Gorillas JS</title>
     <style>
-        body {
-            background-color: orange;
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
+        canvas {
+            border: 1px solid black;
+            background: #87CEEB;
         }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 2.5em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .vermelho {
-            color: red;
-        }
-
-        .branco {
-            color: white;
-        }
-
-        .perfil {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .botao {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .form-cadastro {
-            margin: 20px 0;
-        }
-
-        input {
-            display: block;
-            margin: 10px 0;
-            padding: 8px;
-            width: 250px;
-        }
-
-        .chat {
-            background-color: white;
-            height: 200px;
-            overflow-y: scroll;
+        .controls {
+            margin: 10px;
             padding: 10px;
-            margin: 20px 0;
-        }
-
-        .botoes-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span class="vermelho">TVVALENAREDE</span>
-            <span class="branco"> REDE SOCIAL DO BRASIL</span>
-        </div>
-        <div class="perfil"></div>
-    </header>
-
-    <div class="form-cadastro">
-        <input type="text" placeholder="Nome" id="nome">
-        <input type="email" placeholder="E-mail" id="email">
-        <input type="password" placeholder="Senha" id="senha">
-        <button class="botao" onclick="cadastrar()">Cadastrar</button>
+    <div class="controls">
+        Ângulo: <input type="number" id="angle" min="0" max="90" value="45">°
+        Velocidade: <input type="number" id="velocity" min="1" max="100" value="50">
+        <button onclick="fire()">Lançar Banana!</button>
     </div>
-
-    <button class="botao" onclick="window.location.href='mailto:tvbonani@gmail.com?subject=Envio de Foto'">Enviar Fotos</button>
-    <button class="botao" onclick="window.location.href='mailto:tvbonani@gmail.com?subject=Envio de Vídeo'">Enviar Vídeos</button>
-
-    <div class="chat" id="chat"></div>
-    <input type="text" placeholder="Comentário" id="comentario">
-    <button class="botao" onclick="enviarComentario()">Enviar Comentário</button>
-
-    <div class="botoes-links" id="botoes-links"></div>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
 
     <script>
-        const links = [
-            {nome: "MADE CENTER", url: "#"},
-            {nome: "J.E.C.S", url: "#"},
-            {nome: "SERGIUS ALIANÇAS", url: "#"},
-            {nome: "BAR DO OSMAR", url: "#"},
-            {nome: "CASA 3 IRMÃOS", url: "#"},
-            {nome: "CASA DP NORDESTINO", url: "#"},
-            {nome: "SERGINHOS PNEUS", url: "#"},
-            {nome: "IMOBILIÁRIA DANELLI", url: "#"},
-            {nome: "FUTEBOL AO VIVO", url: "#"},
-            {nome: "WEBCOMEDY", url: "#"},
-            {nome: "FACEBOOK", url: "#"},
-            {nome: "INSTAGRAM", url: "#"},
-            {nome: "EVENTOS AO VIVO", url: "#"},
-            {nome: "YOUTUBE", url: "#"},
-            {nome: "TIKTOK", url: "#"}
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const GRAVITY = 0.3;
+        const EXPLOSION_RADIUS = 20;
+        
+        let terrain = [];
+        let players = [
+            {x: 50, y: 0, score: 0},
+            {x: 750, y: 0, score: 0}
         ];
+        
+        let currentPlayer = 0;
+        let projectile = null;
+        let wind = Math.random() * 6 - 3;
 
-        function cadastrar() {
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            alert(`Cadastro realizado!\nNome: ${nome}\nE-mail: ${email}`);
+        function generateTerrain() {
+            terrain = new Array(canvas.width).fill(canvas.height - 50);
+            let height = canvas.height - 50;
+            let displacement = 100;
+            
+            terrain[0] = height;
+            terrain[canvas.width - 1] = height;
+            
+            for(let step = canvas.width - 1; step > 1; step = Math.floor(step / 2)) {
+                for(let i = 0; i < canvas.width - 1; i += step) {
+                    let mid = i + Math.floor(step / 2);
+                    terrain[mid] = (terrain[i] + terrain[i + step]) / 2 + (Math.random() * displacement * 2 - displacement);
+                }
+                displacement *= 0.5;
+            }
+
+            players[0].y = terrain[players[0].x] - 20;
+            players[1].y = terrain[players[1].x] - 20;
         }
 
-        function enviarComentario() {
-            const comentario = document.getElementById('comentario').value;
-            const chat = document.getElementById('chat');
-            chat.innerHTML += `<p>${comentario}</p>`;
-            document.getElementById('comentario').value = '';
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Desenhar terreno
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            for(let x = 0; x < canvas.width; x++) {
+                ctx.lineTo(x, terrain[x]);
+            }
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.fillStyle = '#4a3728';
+            ctx.fill();
+            
+            // Desenhar gorilas e nomes
+            players.forEach((player, index) => {
+                // Corpo
+                ctx.beginPath();
+                ctx.arc(player.x, player.y, 20, 0, Math.PI * 2);
+                ctx.fillStyle = index === 0 ? 'blue' : 'red';
+                ctx.fill();
+                
+                // Cabeça
+                ctx.beginPath();
+                ctx.arc(player.x, player.y - 25, 15, 0, Math.PI * 2);
+                ctx.fillStyle = 'saddlebrown';
+                ctx.fill();
+                
+                // Nomes dos jogadores
+                ctx.save();
+                ctx.fillStyle = 'black';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                if(index === 0) {
+                    ctx.fillText("Cleiton Bonani", player.x, player.y - 40);
+                } else {
+                    ctx.fillText("André Bonani", player.x, player.y - 40);
+                }
+                ctx.restore();
+            });
+            
+            // Desenhar banana
+            if(projectile) {
+                ctx.beginPath();
+                ctx.arc(projectile.x, projectile.y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = 'yellow';
+                ctx.fill();
+            }
+            
+            // Desenhar informações
+            ctx.fillStyle = 'black';
+            ctx.font = '16px Arial';
+            ctx.fillText(`Vento: ${wind.toFixed(1)} m/s`, 10, 20);
+            ctx.fillText(`Jogador ${currentPlayer + 1}`, 10, 40);
         }
 
-        // Criar botões de links
-        const container = document.getElementById('botoes-links');
-        links.forEach(link => {
-            const botao = document.createElement('button');
-            botao.className = 'botao';
-            botao.textContent = link.nome;
-            botao.onclick = () => window.location.href = link.url;
-            container.appendChild(botao);
-        });
+        // Restante do código permanece igual...
+        function fire() {
+            const angle = document.getElementById('angle').value * Math.PI / 180;
+            const velocity = document.getElementById('velocity').value;
+            
+            projectile = {
+                x: players[currentPlayer].x,
+                y: players[currentPlayer].y - 25,
+                vx: Math.cos(angle) * (velocity / 2) + (wind / 10),
+                vy: -Math.sin(angle) * (velocity / 2)
+            };
+            
+            animate();
+        }
+
+        function animate() {
+            if(!projectile) return;
+            
+            projectile.x += projectile.vx;
+            projectile.y += projectile.vy;
+            projectile.vy += GRAVITY;
+            
+            if(projectile.x >= 0 && projectile.x < canvas.width) {
+                const terrainHeight = terrain[Math.floor(projectile.x)];
+                if(projectile.y >= terrainHeight) {
+                    explode(projectile.x, projectile.y);
+                    projectile = null;
+                    return;
+                }
+            }
+            
+            players.forEach((player, index) => {
+                const dx = projectile.x - player.x;
+                const dy = projectile.y - (player.y - 25);
+                if(Math.sqrt(dx*dx + dy*dy) < 20) {
+                    alert(`Jogador ${currentPlayer + 1} venceu!`);
+                    generateTerrain();
+                    draw();
+                    projectile = null;
+                    return;
+                }
+            });
+            
+            if(projectile.y > canvas.height) {
+                projectile = null;
+                currentPlayer = (currentPlayer + 1) % 2;
+                wind = Math.random() * 6 - 3;
+                draw();
+                return;
+            }
+            
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        function explode(x, y) {
+            for(let i = x - EXPLOSION_RADIUS; i < x + EXPLOSION_RADIUS; i++) {
+                if(i < 0 || i >= canvas.width) continue;
+                const dx = i - x;
+                const dy = Math.sqrt(EXPLOSION_RADIUS**2 - dx**2);
+                terrain[i] = Math.min(terrain[i], y + dy);
+            }
+            
+            currentPlayer = (currentPlayer + 1) % 2;
+            draw();
+        }
+
+        generateTerrain();
+        draw();
     </script>
 </body>
 </html>
