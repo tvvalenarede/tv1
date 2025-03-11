@@ -1,186 +1,101 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Gorillas JS</title>
+  <head>
+    <title>Sergius Aliançás e Óculos</title>
+    <meta charset="utf-8">
     <style>
-        canvas {
-            border: 1px solid black;
-            background: #87CEEB;
-        }
-        .controls {
-            margin: 10px;
-            padding: 10px;
-        }
+      /* Estilos mantidos iguais */
+      body {
+        background-color: orange;
+        font-family: Arial;
+      }
+      h1, h2 {
+        text-align: center;
+      }
+      form {
+        width: 500px;
+        margin: auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input,textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
-    <div class="controls">
-        Ângulo: <input type="number" id="angle" min="0" max="90" value="45">°
-        Velocidade: <input type="number" id="velocity" min="1" max="100" value="50">
-        <button onclick="fire()">Lançar Banana!</button>
-    </div>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
+  </head>
+  <body>
+    <h1>SERGIUS ALIANÇAS E ÓCULOS</h1>
+    <h2>Rua 7 de Setembro,479 Tremenbé – S.P</h2>
+    
+    <form id="contact-form">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" placeholder="Nome" required>
+      
+      <label for="address">Endereço:</label>
+      <input type="text" id="address" name="address" placeholder="Endereço" required>
+      
+      <label for="telephone">Teléfone:</label>
+      <input type="tel" id="telephone" name="telephone" placeholder="Teléfone" required>
+      
+      <label for="message">Mensagem:</label>
+      <textarea id="message" name="message" placeholder="Mensagem" rows="5" cols="50" required></textarea>
+      
+      <button type="submit">Enviar</button>
+    </form>
 
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const GRAVITY = 0.3;
-        const EXPLOSION_RADIUS = 20;
-        
-        let terrain = [];
-        let players = [
-            {x: 50, y: 0, score: 0},
-            {x: 750, y: 0, score: 0}
-        ];
-        
-        let currentPlayer = 0;
-        let projectile = null;
-        let wind = Math.random() * 6 - 3;
+      (function() {
+        // Configuração do EmailJS
+        emailjs.init('SEU_USER_ID'); // Insira seu User ID do EmailJS
 
-        function generateTerrain() {
-            terrain = new Array(canvas.width).fill(canvas.height - 50);
-            let height = canvas.height - 50;
-            let displacement = 100;
-            
-            terrain[0] = height;
-            terrain[canvas.width - 1] = height;
-            
-            for(let step = canvas.width - 1; step > 1; step = Math.floor(step / 2)) {
-                for(let i = 0; i < canvas.width - 1; i += step) {
-                    let mid = i + Math.floor(step / 2);
-                    terrain[mid] = (terrain[i] + terrain[i + step]) / 2 + (Math.random() * displacement * 2 - displacement);
-                }
-                displacement *= 0.5;
+        const contactForm = document.getElementById('contact-form');
+
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Validação dos campos
+          const formData = new FormData(contactForm);
+          const fields = ['name', 'address', 'telephone', 'message'];
+
+          for(const field of fields) {
+            if(!formData.get(field).trim()) {
+              alert('Todos os campos são obrigatórios!');
+              return;
             }
+          }
 
-            players[0].y = terrain[players[0].x] - 20;
-            players[1].y = terrain[players[1].x] - 20;
-        }
+          try {
+            // Envio do email
+            await emailjs.sendForm(
+              'SEU_SERVICE_ID', // Service ID
+              'SEU_TEMPLATE_ID', // Template ID
+              contactForm
+            );
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Desenhar terreno
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height);
-            for(let x = 0; x < canvas.width; x++) {
-                ctx.lineTo(x, terrain[x]);
-            }
-            ctx.lineTo(canvas.width, canvas.height);
-            ctx.fillStyle = '#4a3728';
-            ctx.fill();
-            
-            // Desenhar gorilas e nomes
-            players.forEach((player, index) => {
-                // Corpo
-                ctx.beginPath();
-                ctx.arc(player.x, player.y, 20, 0, Math.PI * 2);
-                ctx.fillStyle = index === 0 ? 'blue' : 'red';
-                ctx.fill();
-                
-                // Cabeça
-                ctx.beginPath();
-                ctx.arc(player.x, player.y - 25, 15, 0, Math.PI * 2);
-                ctx.fillStyle = 'saddlebrown';
-                ctx.fill();
-                
-                // Nomes dos jogadores
-                ctx.save();
-                ctx.fillStyle = 'black';
-                ctx.font = '16px Arial';
-                ctx.textAlign = 'center';
-                if(index === 0) {
-                    ctx.fillText("Cleiton Bonani", player.x, player.y - 40);
-                } else {
-                    ctx.fillText("André Bonani", player.x, player.y - 40);
-                }
-                ctx.restore();
-            });
-            
-            // Desenhar banana
-            if(projectile) {
-                ctx.beginPath();
-                ctx.arc(projectile.x, projectile.y, 5, 0, Math.PI * 2);
-                ctx.fillStyle = 'yellow';
-                ctx.fill();
-            }
-            
-            // Desenhar informações
-            ctx.fillStyle = 'black';
-            ctx.font = '16px Arial';
-            ctx.fillText(`Vento: ${wind.toFixed(1)} m/s`, 10, 20);
-            ctx.fillText(`Jogador ${currentPlayer + 1}`, 10, 40);
-        }
-
-        // Restante do código permanece igual...
-        function fire() {
-            const angle = document.getElementById('angle').value * Math.PI / 180;
-            const velocity = document.getElementById('velocity').value;
-            
-            projectile = {
-                x: players[currentPlayer].x,
-                y: players[currentPlayer].y - 25,
-                vx: Math.cos(angle) * (velocity / 2) + (wind / 10),
-                vy: -Math.sin(angle) * (velocity / 2)
-            };
-            
-            animate();
-        }
-
-        function animate() {
-            if(!projectile) return;
-            
-            projectile.x += projectile.vx;
-            projectile.y += projectile.vy;
-            projectile.vy += GRAVITY;
-            
-            if(projectile.x >= 0 && projectile.x < canvas.width) {
-                const terrainHeight = terrain[Math.floor(projectile.x)];
-                if(projectile.y >= terrainHeight) {
-                    explode(projectile.x, projectile.y);
-                    projectile = null;
-                    return;
-                }
-            }
-            
-            players.forEach((player, index) => {
-                const dx = projectile.x - player.x;
-                const dy = projectile.y - (player.y - 25);
-                if(Math.sqrt(dx*dx + dy*dy) < 20) {
-                    alert(`Jogador ${currentPlayer + 1} venceu!`);
-                    generateTerrain();
-                    draw();
-                    projectile = null;
-                    return;
-                }
-            });
-            
-            if(projectile.y > canvas.height) {
-                projectile = null;
-                currentPlayer = (currentPlayer + 1) % 2;
-                wind = Math.random() * 6 - 3;
-                draw();
-                return;
-            }
-            
-            draw();
-            requestAnimationFrame(animate);
-        }
-
-        function explode(x, y) {
-            for(let i = x - EXPLOSION_RADIUS; i < x + EXPLOSION_RADIUS; i++) {
-                if(i < 0 || i >= canvas.width) continue;
-                const dx = i - x;
-                const dy = Math.sqrt(EXPLOSION_RADIUS**2 - dx**2);
-                terrain[i] = Math.min(terrain[i], y + dy);
-            }
-            
-            currentPlayer = (currentPlayer + 1) % 2;
-            draw();
-        }
-
-        generateTerrain();
-        draw();
+            alert('Mensagem enviada com sucesso!');
+            contactForm.reset();
+          } catch (error) {
+            console.error('Erro no envio:', error);
+            alert(`Falha no envio: ${error.text}`);
+          }
+        });
+      })();
     </script>
-</body>
+  </body>
 </html>
