@@ -1,613 +1,420 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVVALENAREDE & FACEBOOK</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2A3B47">
-    <link rel="apple-touch-icon" href="logocerto.png">
-    <link rel="icon" type="image/png" href="logocerto.png">
-    <link rel="icon" type="image/png" href="https://github.com/tvvalenarede/bonani3/raw/main/logocerto2025.png">
-    <link rel="shortcut icon" href="https://github.com/tvvalenarede/bonani3/raw/main/logocerto2025.png" type="image/png">
-    <link rel="apple-touch-icon" href="logocerto.png">
-    <link rel="icon" type="image/png" href="logocerto.png">
-    <link rel="icon" href="logo192.png" type="image/png">
-    <link rel="apple-touch-icon" href="logo192.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="manifest" href="manifest.json">
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TVVALENAREDE</title>
+    <meta name="description" content="Escritórios dos Advogados Associados do Vale do Paraíba, sediada na cidade de Taubaté S.P, com vários Advogados atuando nas áreas de Direito de Trabalho, Direito Previdenciário e Direito Civil">
+    <meta property="og:title" content="TVVALENAREDE">
+    <meta property="og:description" content="Escritórios dos Advogados Associados do Vale do Paraíba">
+    <meta property="og:image" content="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000024-76fc976fcc/700/logo%20advogado.fw.png?ph=c1283f1f9d">
+    <meta property="og:url" content="https://tvvalenarede.webnode.page/">
+    <link rel="icon" href="https://duyn491kcolsw.cloudfront.net/files/1j/1j3/1j3767.ico?ph=c1283f1f9d">
     <style>
-        :root {
-            --primary: #2A3B47;
-            --secondary: #B38E5D;
-            --accent: #FF6B00;
-            --orange: #FF8C00;
-        }
-
+        /* Reset e estilos básicos */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background: #f9f9f9;
+            color: #333;
             line-height: 1.6;
         }
-
-        .main-header {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            border-bottom: 3px solid var(--secondary);
-        }
-
-        .main-header h1 {
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* NOVA SEÇÃO PARA OS BOTÕES */
-        .top-buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #2A3B47 0%, #1a2530 100%);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .top-button {
-            padding: 1rem 1.5rem;
-            background: linear-gradient(to bottom, #FF8C00, #FF6B00);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            min-width: 200px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .top-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-            background: linear-gradient(to bottom, #FF9E30, #FF7F20);
-        }
-
-        .top-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .top-button.perfumaria {
-            background: linear-gradient(to bottom, #FF6B9C, #D8436E);
-        }
         
-        .top-button.perfumaria:hover {
-            background: linear-gradient(to bottom, #FF80AA, #E05C85);
-        }
-
-        .top-button.advogados {
-            background: linear-gradient(to bottom, #4A90E2, #2A5CAA);
-        }
-        
-        .top-button.advogados:hover {
-            background: linear-gradient(to bottom, #5CA0F0, #3A6CC0);
-        }
-
-        .top-button.casa-irmaos {
-            background: linear-gradient(to bottom, #34C759, #2AA44F);
-        }
-        
-        .top-button.casa-irmaos:hover {
-            background: linear-gradient(to bottom, #44D769, #3AB45F);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1400px;
+        .container {
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .sidebar {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .nav-button {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            background: var(--secondary);
-        }
-
-        /* Estilo especial para o primeiro botão */
-        .nav-button.agua-quente {
-            background: #FF0000; /* Vermelho */
-            color: #FFFF00; /* Amarelo */
-        }
-
-        .nav-button.agua-quente:hover {
-            background: #CC0000; /* Vermelho mais escuro no hover */
-            color: #FFFF00; /* Mantém amarelo no hover */
-        }
-
-        .main-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .social-card {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .social-card:hover {
-            transform: scale(1.05);
-            background: var(--secondary);
-        }
-
-        .contact-form {
-            background: var(--primary);
-            padding: 2rem;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: 2px solid var(--secondary);
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-        }
-
-        .contact-form button {
-            background: var(--secondary);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .contact-form button:hover {
-            background: var(--accent);
-        }
-
-        .fixed-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-            z-index: 1000;
-        }
-
-        .fixed-button-left {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: var(--orange);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-            z-index: 1000;
-        }
-
-        .fixed-button:hover,
-        .fixed-button-left:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.1);
-        }
-
-        /* NOVOS ESTILOS PARA A SEÇÃO DE NOTÍCIAS */
-        .news-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
+            padding: 0 15px;
         }
         
-        .news-title {
-            text-align: center;
-            font-size: 3rem;
-            margin: 2rem 0;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-        
-        .news-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-        
-        .videos-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
+        /* Header e Navegação */
+        header {
+            background-color: #F4F7F9;
+            padding: 15px 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .news-column {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .news-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .news-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .news-item p {
-            color: #555;
-            font-size: 0.95rem;
-        }
-        
-        .news-item time {
-            display: block;
-            color: #888;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-        }
-        
-        .news-category {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .programming-column {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .programming-item {
+        .header-content {
             display: flex;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .programming-time {
+        .logo {
+            font-size: 24px;
             font-weight: bold;
-            color: var(--primary);
-            margin-right: 1rem;
-            min-width: 60px;
+            color: #2c3e50;
         }
         
-        .programming-title {
-            color: #333;
+        .nav-menu {
+            display: flex;
+            list-style: none;
         }
-
+        
+        .nav-menu li {
+            margin-left: 20px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #2c3e50;
+            margin: 2px 0;
+            transition: all 0.3s;
+        }
+        
+        /* Seção Hero */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000020-ef5b1ef5b4/foto%20deusa.fw.png?ph=c1283f1f9d');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        .hero-logo {
+            max-width: 300px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Seções gerais */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        /* Sobre nós */
+        .about {
+            background-color: #F4F7F9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Contato */
+        .contact {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://duyn491kcolsw.cloudfront.net/files/3v/3vq/3vq0qg.jpg?ph=c1283f1f9d');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsividade */
         @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-
-            .sidebar {
-                order: -1;
-            }
-
-            .main-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .fixed-button,
-            .fixed-button-left {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-                bottom: 10px;
+            .menu-toggle {
+                display: flex;
             }
             
-            /* Responsivo para seção de notícias */
-            .news-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .videos-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-title {
-                font-size: 2rem;
-            }
-            
-            /* Responsivo para botões superiores */
-            .top-buttons-container {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
                 flex-direction: column;
-                align-items: center;
-                padding: 1rem;
+                background-color: #F4F7F9;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
             }
             
-            .top-button {
-                width: 90%;
-                margin-bottom: 0.5rem;
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Cabeçalho com o logo e título -->
-    <header class="main-header">
-        <img src="https://github.com/tvvalenarede/bonani3/raw/main/logocerto2025.png" alt="Logo">
-        <h1>TVVALENAREDE & FACEBOOK</h1>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">REDES SOCIAIS J.E.C.S</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a href="#contato">Entre em contato</a></li>
+            </ul>
+        </div>
     </header>
-    
-    <!-- NOVA SEÇÃO DE BOTÕES SUPERIORES -->
-    <div class="top-buttons-container">
-        <a href="https://tvvalenarede.github.io/bonani2/" class="top-button perfumaria">Perfumaria da Rita</a>
-        <a href="https://tvvalenarede.github.io/bonani2/" class="top-button advogados">J.E.C.S Advogados</a>
-        <a href="https://tvvalenarede.github.io/bonani2/" class="top-button casa-irmaos">Casa 3 Irmãos</a>
-    </div>
 
-    <div class="grid-container">
-        <!-- Sidebar Esquerda -->
-        <div class="sidebar">
-            <a href="https://tvvalenarede.github.io/redesocial1/" class="nav-button agua-quente">  SITE DO MAICON JOGADOR</a>
-            
-            <a href="https://www.facebook.com/TVRBRAZIL" class="nav-button agua-quente" class="nav-button">TVVALENAREDE AO VIVO</a>
-            <a href="https://tvvalenarede.github.io/jogos/" class="nav-button">Shekinah Energéticos</a>
-            <a href="https://casa3-irmaos.webnode.page" class="nav-button">CASA 3 IRMÃOS</a>
-            <a href="https://www.youtube.com/watch?v=z2j0Yzf8Myk&t=34s" class="nav-button">PREMIAÇÃO ACEESP</a>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000024-76fc976fcc/logo%20advogado.fw.png?ph=c1283f1f9d" alt="Logo Advogados Associados" class="hero-logo">
+            <h1>Escritórios dos Advogados Associados do Vale do Paraíba</h1>
+            <p>Sediada na cidade de Taubaté S.P, com vários Advogados atuando nas áreas de Direito de Trabalho, Direito Previdenciário e Direito Civil, Edifício Office praça Dom Epaminondas</p>
+            <a href="#contato" class="btn">Entre em contato</a>
         </div>
+    </section>
 
-        <!-- Conteúdo Principal -->
-        <div class="main-content">
-            <div class="social-grid">
-                <a href="https://made-center7.webnode.page" class="social-card">FUTEBOL</a>
-                <a href="https://www.youtube.com/channel/UC2d71oRHuTsosOap7GeYT4g" class="social-card">TVVALENAREDE YOUTUBE LIVE</a>
-                <a href="https://bar-do-osmar-de-taubate-s-p.webnode.page/" class="social-card">BAR DO OSMAR</a>
-                <a href="https://casa3-irmaos.webnode.page/?_gl=1*1c6qg4l*_gcl_au*MTI0NjU5NzMzNS4xNzQxNzI2MjQ1LjE1MzI2NjMxOTAuMTc0MzUzMDU1Mi4xNzQzNTMwNTUx" class="social-card">CASA 3 IRMÃOS</a>
-                <a href="https://tvvalenarede.webnode.page/?_gl=1*1p8g9b5*_gcl_au*MTI0NjU5NzMzNS4xNzQxNzI2MjQ1LjkzMjUyOTk2Mi4xNzQyMzA0NTI5LjE3NDIzMDQ1Mjg." class="social-card">ADVOGADOS ASSOCIADOS J.E.C.S</a>
-                <a href="https://serginhos-centro-automotivo-de-taubate.webnode.page/" class="social-card">SERGINHO PNEUS</a>
-            </div>
-
-            <form class="contact-form" id="meuFormulario" action="https://formsubmit.co/tvrbrazil@gmail.com" method="POST">
-                <input type="text" id="nome" name="Nome" placeholder="Nome" required>
-                <input type="email" id="email" name="E-mail" placeholder="E-mail" required>
-                <textarea id="mensagem" name="Mensagem" rows="5" placeholder="Mensagem" required></textarea>
-                <input type="hidden" name="_subject" value="Nova mensagem do site">
-                <button type="submit">ENVIAR MENSAGEM</button>
-            </form>
+    <!-- Contato Rápido -->
+    <section class="container">
+        <h2 class="section-title">Contato Rápido</h2>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p>Clicar no número do telefone abaixo para entrar no WhatsApp dos Advogados Associados J.E.C.S</p>
+            <a href="https://wa.me/5512981387597" class="btn" target="_blank" rel="nofollow">wa.me/5512981387597</a>
         </div>
-
-        <!-- Sidebar Direita -->
-        <div class="sidebar">
-            <a href="https://www.facebook.com/?locale=pt_BR" class="nav-button">FACEBOOK</a>
-            <a href="https://www.facebook.com/tvvalenarede2" class="nav-button">FACEBOOK2</a>
-            <a href="https://www.instagram.com/tvvalenarede?igsh=aWF0bjdueGR5N3cw" class="nav-button">INSTAGRAM1</a>
-            <a href="https://www.instagram.com/tvvalenarede2/" class="nav-button">INSTAGRAM2</a>
-            <a href="http://youtube.com/tvvalenarede" class="nav-button">YOUTUBE</a>
-            <a href="https://www.tiktok.com/@tvvalenarede?_t=ZM-8uwnC2d12ZD&_r=1" class="nav-button">TIKTOK</a>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <a href="https://www.instagram.com/jecs_advocacia/" class="btn" target="_blank" rel="nofollow">www.instagram.com/jecs_advocacia/</a>
+            <p>Clicar no link acima para entrar no INSTAGRAM dos ADVOGADOS ASSOCIADOS Dr José Eduardo Costa de Souza</p>
         </div>
-    </div>
+    </section>
 
-    <!-- NOVA SEÇÃO DE NOTÍCIAS E VÍDEOS -->
-    <div class="news-section">
-        <h2 class="news-title">TVVALENAREDE NOTÍCIAS</h2>
-        
-        <!-- Container de Vídeos -->
-        <div class="videos-container">
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/z2j0Yzf8Myk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Mapa -->
+    <section class="container">
+        <h2 class="section-title">Localização</h2>
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.244035466503!2d-45.5597493243552!3d-23.41741605634927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cd5885e56d38cb%3A0x91c2d6a9e9de6a02!2sPra%C3%A7a%20Dom%20Epaminondas%2C%20Taubat%C3%A9%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1648732630304!5m2!1spt-BR!2sbr" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <p style="text-align: center; margin-top: 20px;">Entrar no mapa Google acima que o levará direto para o Escritório dos ADVOGADOS ASSOCIADOS J.E.C.S.</p>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Direito Previdenciário</h3>
+                    <p>Resumindo o direito previdenciário, é o conjunto de normas que regulam os direitos relacionados à previdência social, ou seja, o sistema de proteção social que garante benefícios aos trabalhadores e seus dependentes.</p>
                 </div>
-                <h3>PREMIAÇÃO ACEESP</h3>
-            </div>
-            
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="service-item">
+                    <div class="service-icon">📋</div>
+                    <h3>Consultoria Jurídica</h3>
+                    <p>Consultoria jurídica é um serviço oferecido por profissionais do direito que consiste em fornecer orientação e aconselhamento sobre questões legais a indivíduos, empresas ou organizações.</p>
                 </div>
-                <h3>Últimas Notícias do Brasil</h3>
-            </div>
-            
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="service-item">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Direito da família</h3>
+                    <p>O direito de família é um ramo do direito que trata das relações familiares e dos direitos e deveres dos indivíduos dentro dessas relações.</p>
                 </div>
-                <h3>Entrevistas Exclusivas</h3>
+                <div class="service-item">
+                    <div class="service-icon">💼</div>
+                    <h3>Direito Trabalhista</h3>
+                    <p>O Direito Trabalhista é um ramo do direito que regula as relações entre empregadores e empregados, protegendo os direitos e garantias dos trabalhadores.</p>
+                </div>
             </div>
         </div>
-        
-        <!-- Container de Notícias e Programação -->
-        <div class="news-container">
-            <div class="news-column">
-                <h2>Últimas Notícias</h2>
-                
-                <div class="news-item">
-                    <span class="news-category">Política</span>
-                    <h3>Novas medidas econômicas são anunciadas pelo governo</h3>
-                    <p>O ministro da economia apresentou hoje um pacote com medidas para estimular o crescimento econômico e conter a inflação.</p>
-                    <time>Há 2 horas</time>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div>
+                    <h3>Dr José Alves de Souza</h3>
+                    <p>Em 05 de agosto de 1942 nascia na cidade de Paraibuna, José Alves de Souza, mas em 1965 fez de Taubaté seu novo lar. Em 1969 deu seus primeiros passos na área que realmente amava, iniciando seus estudos no Departamento de Ciências Jurídicas da Universidade de Taubaté. Já em 1974 fundou seu escritório, entregando muito trabalho e dedicação para seu crescimento e posteriormente ao dos integrantes que vieram a formar sua equipe.</p>
+                    <p>Anos depois, uma nova geração da família de Souza se junta à história de dedicação e sucesso, com José Eduardo Costa de Souza, filho de José Alves, ao se formar também pela Universidade de Taubaté em 1998, auxiliando seu pai desde cedo.</p>
                 </div>
-                
-                <div class="news-item">
-                    <span class="news-category">Esportes</span>
-                    <h3>Time local vence campeonato estadual</h3>
-                    <p>Com uma vitória por 3 a 1, o time da cidade conquistou o título estadual após 10 anos de espera.</p>
-                    <time>Há 5 horas</time>
-                </div>
-                
-                <div class="news-item">
-                    <span class="news-category">Cultura</span>
-                    <h3>Festival de cinema começa nesta sexta</h3>
-                    <p>A 15ª edição do festival traz produções nacionais e internacionais com entrada gratuita em diversos locais da cidade.</p>
-                    <time>Há 8 horas</time>
-                </div>
-                
-                <div class="news-item">
-                    <span class="news-category">Saúde</span>
-                    <h3>Nova unidade de saúde é inaugurada</h3>
-                    <p>O prefeito inaugurou hoje a nova UPA que vai atender mais de 50 mil pessoas na região norte da cidade.</p>
-                    <time>Ontem, 18:30</time>
+                <div class="about-image">
+                    <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000004-b841db841f/dr%20jos%C3%A9%20alves.png?ph=c1283f1f9d" alt="Dr José Alves de Souza">
                 </div>
             </div>
             
-            <div class="programming-column">
-                <h2>Programação TVVALENAREDE</h2>
-                
-                <div class="programming-item">
-                    <span class="programming-time"> Segunda Feira 19:30</span>
-                    <span class="programming-title">Tvvalenarede Futebol</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time">Terça Feira 19:30</span>
-                    <span class="programming-title">Tvvalenarede Criações</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time"> Quarta-Feira 19:30</span>
-                    <span class="programming-title">Tvvalenarede Notícias</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time">Quinta Feira 19:30</span>
-                    <span class="programming-title">Tvvalenarede Convidados</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time"> Sexta Feira 19:30</span>
-                    <span class="programming-title">Tvvalenarede Humor</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time"> Sábado 16:00</span>
-                    <span class="programming-title">Tvvalenarede Live</span>
-                </div>
-                
-                <div class="programming-item">
-                    <span class="programming-time"> Domingo 10:00</span>
-                    <span class="programming-title">Resumo da semana</span>
+            <div style="margin-top: 50px;">
+                <h3 style="text-align: center; margin-bottom: 30px;">José Eduardo Costa de Souza: Advogado Trabalhista</h3>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000036-14a8d14a90/foto%20nova%20eduardo%20usar.jpeg?ph=c1283f1f9d" alt="José Eduardo Costa de Souza">
+                    </div>
+                    <div>
+                        <p>Dr José Eduardo de Costa de Souza nasceu e cresceu na acolhedora cidade de Pindamonhangaba, no interior de São Paulo. Desde jovem, incentivado pelo seu pai o Dr José Alves de Souza demonstrou uma forte inclinação para defender os direitos dos outros e uma paixão pela justiça.</p>
+                        <p>Após concluir o ensino médio com excelência, José Eduardo ingressou na Universidade de Taubaté (UNITAU), onde se dedicou arduamente aos estudos de Direito. Durante sua graduação, ele se destacou não apenas por seu desempenho acadêmico exemplar, mas também por seu compromisso em ajudar seus colegas e comunidade.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Botões Fixos -->
-    <a href="https://www.youtube.com/watch?v=ll-BtWdFNUc&t=66s" class="fixed-button">PROGRAMA SHEKINAH</a>
-    <a href="https://tvvalenarede.webnode.page/?_gl=1*tgfs5g*_gcl_au*MTI0NjU5NzMzNS4xNzQxNzI2MjQ1LjkzMjUyOTk2Mi4xNzQyMzA0NTI5LjE3NDIzMDQ1Mjg." class="fixed-button-left">J.E.C.S</a>
+    <!-- Contato -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contate-nos</h2>
+            <div class="contact-info">
+                <p><strong>Visite-nos</strong></p>
+                <p>Praça Dom Epaminondas, cidade de Taubaté S.P no Edificio Óffice</p>
+                <p><strong>Entre em contato conosco</strong></p>
+                <p>12 98138 7597</p>
+                <p><strong>E-mail</strong></p>
+                <p>DrJoseeduardocostadesouza@gmail.com</p>
+            </div>
+            <a href="https://wa.me/5512981387597" class="btn" target="_blank" rel="nofollow">Entre em contato via WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>REDES SOCIAIS J.E.C.S - Advogados Associados</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/jecs_advocacia/" target="_blank" rel="nofollow">Instagram</a>
+                <a href="https://wa.me/5512981387597" target="_blank" rel="nofollow">WhatsApp</a>
+            </div>
+            <p>© 2025 Todos os direitos reservados para a mídia TVVALENAREDE</p>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const formulario = document.getElementById('meuFormulario');
-
-            formulario.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Validação do e-mail
-                const email = formulario.email.value;
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    alert('Por favor, insira um e-mail válido!');
-                    return;
-                }
-
-                // Validação da mensagem
-                if (formulario.mensagem.value.trim().length < 10) {
-                    alert('A mensagem deve ter pelo menos 10 caracteres!');
-                    return;
-                }
-
-                // Confirmação de envio
-                if (confirm('Deseja realmente enviar a mensagem?')) {
-                    formulario.submit();
-                    alert('Mensagem enviada com sucesso!');
-                    formulario.reset();
-                }
+        // Menu mobile toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
             });
         });
     </script>
