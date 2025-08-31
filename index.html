@@ -1,29 +1,34 @@
 
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TVVALENAREDE</title>
-    <meta name="description" content="Escritórios dos Advogados Associados do Vale do Paraíba, sediada na cidade de Taubaté S.P, com vários Advogados atuando nas áreas de Direito de Trabalho, Direito Previdenciário e Direito Civil">
-    <meta property="og:title" content="TVVALENAREDE">
-    <meta property="og:description" content="Escritórios dos Advogados Associados do Vale do Paraíba">
-    <meta property="og:image" content="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000024-76fc976fcc/700/logo%20advogado.fw.png?ph=c1283f1f9d">
-    <meta property="og:url" content="https://tvvalenarede.webnode.page/">
-    <link rel="icon" href="https://duyn491kcolsw.cloudfront.net/files/1j/1j3/1j3767.ico?ph=c1283f1f9d">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pimenta Elétrica de Taubaté - Materiais Elétricos e Hidráulicos</title>
+    <meta name="description" content="Loja especializada em materiais elétricos e hidráulicos em Taubaté. Chuveiros, lustres, lâmpadas, torneiras, canos e muito mais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset e estilos básicos */
+        :root {
+            --primary: #FF4500;
+            --secondary: #FFD700;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+            --gray: #777;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
         
@@ -34,147 +39,264 @@
             padding: 0 15px;
         }
         
-        /* Header e Navegação */
+        /* Header */
         header {
-            background-color: #F4F7F9;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23FF4500" opacity="0.3"/><circle cx="20" cy="20" r="15" fill="%23FFD700" opacity="0.3"/><circle cx="80" cy="30" r="10" fill="%23007bff" opacity="0.3"/><circle cx="30" cy="70" r="12" fill="%2300cc66" opacity="0.3"/><circle cx="70" cy="80" r="8" fill="%239900cc" opacity="0.3"/></svg>');
+            background-size: cover;
+            color: white;
             padding: 15px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .header-content {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c3e50;
+            display: flex;
+            align-items: center;
         }
         
-        .nav-menu {
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            line-height: 1;
+        }
+        
+        .logo-text span {
+            font-size: 0.9rem;
+            color: white;
+        }
+        
+        nav ul {
             display: flex;
             list-style: none;
         }
         
-        .nav-menu li {
+        nav ul li {
             margin-left: 20px;
         }
         
-        .nav-menu a {
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s;
+            font-size: 1rem;
         }
         
-        .nav-menu a:hover {
-            color: #3498db;
+        nav ul li a:hover {
+            color: var(--secondary);
         }
         
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: #2c3e50;
-            margin: 2px 0;
-            transition: all 0.3s;
-        }
-        
-        /* Seção Hero */
-        .hero {
-            position: relative;
-            height: 80vh;
+        .cart-icon {
+            background-color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cart-icon:hover {
+            background-color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
             color: white;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000020-ef5b1ef5b4/foto%20deusa.fw.png?ph=c1283f1f9d');
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23333"/><circle cx="50" cy="50" r="40" fill="%23FF4500" opacity="0.5"/><circle cx="20" cy="20" r="15" fill="%23FFD700" opacity="0.5"/><circle cx="80" cy="30" r="10" fill="%23007bff" opacity="0.5"/><circle cx="30" cy="70" r="12" fill="%2300cc66" opacity="0.5"/><circle cx="70" cy="80" r="8" fill="%239900cc" opacity="0.5"/></svg>');
             background-size: cover;
-            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
         }
         
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-        }
-        
-        .hero-logo {
-            max-width: 300px;
-            margin: 0 auto 30px;
-        }
-        
-        .hero h1 {
+        .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
         
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
         .btn {
             display: inline-block;
-            background-color: #3498db;
+            background-color: var(--primary);
             color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
+            padding: 12px 25px;
+            border-radius: 5px;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
         
         .btn:hover {
-            background-color: #2980b9;
+            background-color: var(--secondary);
+            color: var(--dark);
         }
         
-        /* Seções gerais */
-        section {
+        /* Categories */
+        .categories {
             padding: 60px 0;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 2rem;
-            color: #2c3e50;
+            position: relative;
         }
         
-        /* Serviços */
-        .services-grid {
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 10px auto;
+        }
+        
+        .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 20px;
         }
         
-        .service-item {
-            text-align: center;
-            padding: 30px 20px;
+        .category-card {
+            background-color: white;
             border-radius: 8px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            text-align: center;
         }
         
-        .service-item:hover {
-            transform: translateY(-10px);
+        .category-card:hover {
+            transform: translateY(-5px);
         }
         
-        .service-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #3498db;
+        .category-icon {
+            background-color: var(--primary);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
         }
         
-        /* Sobre nós */
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Featured Products */
+        .featured-products {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .product-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .product-btn:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* About */
         .about {
-            background-color: #F4F7F9;
+            padding: 60px 0;
         }
         
         .about-content {
@@ -184,88 +306,148 @@
             align-items: center;
         }
         
-        .about-image {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
         }
         
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
         }
         
-        /* Contato */
-        .contact {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://duyn491kcolsw.cloudfront.net/files/3v/3vq/3vq0qg.jpg?ph=c1283f1f9d');
-            background-size: cover;
-            background-position: center;
+        .about-info {
+            background-color: var(--primary);
             color: white;
-            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
         }
         
-        .contact-info {
-            margin-bottom: 30px;
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         /* Footer */
         footer {
-            background-color: #2c3e50;
+            background-color: var(--dark);
             color: white;
             padding: 40px 0 20px;
-            text-align: center;
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
         }
         
         .social-links {
-            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
         }
         
         .social-links a {
-            color: white;
-            margin: 0 10px;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: background-color 0.3s;
         }
         
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background-color: #F4F7F9;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-                padding: 20px 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                margin: 15px 0;
-            }
-            
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
             .about-content {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
             
-            .hero h1 {
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .cart-icon {
+                margin: 15px auto 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+                width: 100%;
+            }
+            
+            .hero h2 {
                 font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -273,436 +455,275 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-content">
-            <div class="logo">REDES SOCIAIS J.E.C.S</div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='20' y='25' width='60' height='50' rx='5' fill='%23FFD700'/><circle cx='35' cy='40' r='5' fill='%23FF4500'/><circle cx='50' cy='40' r='5' fill='%23FF4500'/><circle cx='65' cy='40' r='5' fill='%23FF4500'/><path d='M30 60 L70 60 L65 70 L35 70 Z' fill='%23FF4500'/><text x='50' y='20' font-family='Arial' font-size='10' fill='%23FF4500' text-anchor='middle'>PIMENTA</text><text x='50' y='85' font-family='Arial' font-size='8' fill='%23FF4500' text-anchor='middle'>ELÉTRICA</text></svg>" alt="Pimenta Elétrica Logo">
+                <div class="logo-text">
+                    <h1>PIMENTA ELÉTRICA</h1>
+                    <span>Materiais Elétricos e Hidráulicos</span>
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#sobre">Sobre nós</a></li>
-                <li><a href="#contato">Entre em contato</a></li>
-            </ul>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li>
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000024-76fc976fcc/logo%20advogado.fw.png?ph=c1283f1f9d" alt="Logo Advogados Associados" class="hero-logo">
-            <h1>Escritórios dos Advogados Associados do Vale do Paraíba</h1>
-            <p>Sediada na cidade de Taubaté S.P, com vários Advogados atuando nas áreas de Direito de Trabalho, Direito Previdenciário e Direito Civil, Edifício Office praça Dom Epaminondas</p>
-            <a href="#contato" class="btn">Entre em contato</a>
-        </div>
-    </section>
-
-    <!-- Contato Rápido -->
-    <section class="container">
-        <h2 class="section-title">Contato Rápido</h2>
-        <div style="text-align: center; margin-bottom: 30px;">
-            <p>Clicar no número do telefone abaixo para entrar no WhatsApp dos Advogados Associados J.E.C.S</p>
-            <a href="https://wa.me/5512981387597" class="btn" target="_blank" rel="nofollow">wa.me/5512981387597</a>
-        </div>
-        <div style="text-align: center; margin-bottom: 30px;">
-            <a href="https://www.instagram.com/jecs_advocacia/" class="btn" target="_blank" rel="nofollow">www.instagram.com/jecs_advocacia/</a>
-            <p>Clicar no link acima para entrar no INSTAGRAM dos ADVOGADOS ASSOCIADOS Dr José Eduardo Costa de Souza</p>
-        </div>
-    </section>
-
-    <!-- Mapa -->
-    <section class="container">
-        <h2 class="section-title">Localização</h2>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.244035466503!2d-45.5597493243552!3d-23.41741605634927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cd5885e56d38cb%3A0x91c2d6a9e9de6a02!2sPra%C3%A7a%20Dom%20Epaminondas%2C%20Taubat%C3%A9%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1648732630304!5m2!1spt-BR!2sbr" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p style="text-align: center; margin-top: 20px;">Entrar no mapa Google acima que o levará direto para o Escritório dos ADVOGADOS ASSOCIADOS J.E.C.S.</p>
-    </section>
-
-    <!-- Serviços -->
-    <section id="servicos">
+    <section class="hero" id="home">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">⚖️</div>
-                    <h3>Direito Previdenciário</h3>
-                    <p>Resumindo o direito previdenciário, é o conjunto de normas que regulam os direitos relacionados à previdência social, ou seja, o sistema de proteção social que garante benefícios aos trabalhadores e seus dependentes.</p>
+            <h2>Materiais Elétricos e Hidráulicos de Qualidade</h2>
+            <p>Tudo para sua obra, reforma e manutenção com os melhores preços de Taubaté e região!</p>
+            <a href="#products" class="btn">Ver Produtos</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Categorias de Produtos</h2>
+            </div>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bath"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Chuveiros e Aquecedores</h3>
+                        <p>As melhores marcas com preços imbatíveis</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">📋</div>
-                    <h3>Consultoria Jurídica</h3>
-                    <p>Consultoria jurídica é um serviço oferecido por profissionais do direito que consiste em fornecer orientação e aconselhamento sobre questões legais a indivíduos, empresas ou organizações.</p>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Lâmpadas e Luminárias</h3>
+                        <p>Iluminação para todos os ambientes</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">👨‍👩‍👧‍👦</div>
-                    <h3>Direito da família</h3>
-                    <p>O direito de família é um ramo do direito que trata das relações familiares e dos direitos e deveres dos indivíduos dentro dessas relações.</p>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Ferramentas e Parafusos</h3>
+                        <p>Complete sua caixa de ferramentas</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">💼</div>
-                    <h3>Direito Trabalhista</h3>
-                    <p>O Direito Trabalhista é um ramo do direito que regula as relações entre empregadores e empregados, protegendo os direitos e garantias dos trabalhadores.</p>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Hidráulica</h3>
+                        <p>Torneiras, canos e conexões</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Nós -->
-    <section id="sobre" class="about">
+    <!-- Featured Products -->
+    <section class="featured-products" id="products">
         <div class="container">
-            <h2 class="section-title">Sobre Nós</h2>
-            <div class="about-content">
-                <div>
-                    <h3>Dr José Alves de Souza</h3>
-                    <p>Em 05 de agosto de 1942 nascia na cidade de Paraibuna, José Alves de Souza, mas em 1965 fez de Taubaté seu novo lar. Em 1969 deu seus primeiros passos na área que realmente amava, iniciando seus estudos no Departamento de Ciências Jurídicas da Universidade de Taubaté. Já em 1974 fundou seu escritório, entregando muito trabalho e dedicação para seu crescimento e posteriormente ao dos integrantes que vieram a formar sua equipe.</p>
-                    <p>Anos depois, uma nova geração da família de Souza se junta à história de dedicação e sucesso, com José Eduardo Costa de Souza, filho de José Alves, ao se formar também pela Universidade de Taubaté em 1998, auxiliando seu pai desde cedo.</p>
+            <div class="section-title">
+                <h2>Produtos em Destaque</h2>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-shower"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Chuveiro Elétrico 220V</h3>
+                        <p>Chuveiro de alta performance com controle de temperatura</p>
+                        <div class="product-price">R$ 129,90</div>
+                        <a href="#" class="product-btn">Comprar Agora</a>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000004-b841db841f/dr%20jos%C3%A9%20alves.png?ph=c1283f1f9d" alt="Dr José Alves de Souza">
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Lâmpada LED 9W</h3>
+                        <p>Economia de energia com alta luminosidade</p>
+                        <div class="product-price">R$ 14,90</div>
+                        <a href="#" class="product-btn">Comprar Agora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Ventilador de Teto</h3>
+                        <p>Moderno e silencioso para todos os ambientes</p>
+                        <div class="product-price">R$ 249,90</div>
+                        <a href="#" class="product-btn">Comprar Agora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Torneira para Cozinha</h3>
+                        <p>Design moderno com acabamento cromado</p>
+                        <div class="product-price">R$ 89,90</div>
+                        <a href="#" class="product-btn">Comprar Agora</a>
+                    </div>
                 </div>
             </div>
             
-            <div style="margin-top: 50px;">
-                <h3 style="text-align: center; margin-bottom: 30px;">José Eduardo Costa de Souza: Advogado Trabalhista</h3>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="https://c1283f1f9d.cbaul-cdnwnd.com/333e2bbb195c46f8652dab0ae52cdd80/200000036-14a8d14a90/foto%20nova%20eduardo%20usar.jpeg?ph=c1283f1f9d" alt="José Eduardo Costa de Souza">
-                    </div>
-                    <div>
-                        <p>Dr José Eduardo de Costa de Souza nasceu e cresceu na acolhedora cidade de Pindamonhangaba, no interior de São Paulo. Desde jovem, incentivado pelo seu pai o Dr José Alves de Souza demonstrou uma forte inclinação para defender os direitos dos outros e uma paixão pela justiça.</p>
-                        <p>Após concluir o ensino médio com excelência, José Eduardo ingressou na Universidade de Taubaté (UNITAU), onde se dedicou arduamente aos estudos de Direito. Durante sua graduação, ele se destacou não apenas por seu desempenho acadêmico exemplar, mas também por seu compromisso em ajudar seus colegas e comunidade.</p>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">Ver Todos os Produtos</a>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
-    <section id="contato" class="contact">
+    <!-- About -->
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">Contate-nos</h2>
-            <div class="contact-info">
-                <p><strong>Visite-nos</strong></p>
-                <p>Praça Dom Epaminondas, cidade de Taubaté S.P no Edificio Óffice</p>
-                <p><strong>Entre em contato conosco</strong></p>
-                <p>12 98138 7597</p>
-                <p><strong>E-mail</strong></p>
-                <p>DrJoseeduardocostadesouza@gmail.com</p>
+            <div class="section-title">
+                <h2>Sobre Nossa Loja</h2>
             </div>
-            <a href="https://wa.me/5512981387597" class="btn" target="_blank" rel="nofollow">Entre em contato via WhatsApp</a>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Pimenta Elétrica de Taubaté</h2>
+                    <p>Há mais de 15 anos no mercado, a Pimenta Elétrica é referência em materiais elétricos e hidráulicos em Taubaté e região. Oferecemos produtos de qualidade com os melhores preços.</p>
+                    <p>Nossa missão é fornecer soluções completas para sua casa, obra ou empresa, com atendimento especializado e produtos das melhores marcas do mercado.</p>
+                    <p>Venha nos fazer uma visita e comprove nossa qualidade e variedade de produtos!</p>
+                </div>
+                
+                <div class="about-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Rua Chiquinha De Mattos, 92 - Centro - Taubaté/SP</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(12) 99257-3744</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Segunda a Sexta: 8h às 18h | Sábado: 8h às 13h</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-truck"></i>
+                        <p>Entregamos para toda a região</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <p>REDES SOCIAIS J.E.C.S - Advogados Associados</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/jecs_advocacia/" target="_blank" rel="nofollow">Instagram</a>
-                <a href="https://wa.me/5512981387597" target="_blank" rel="nofollow">WhatsApp</a>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Pimenta Elétrica</h3>
+                    <p>Sua loja especializada em materiais elétricos e hidráulicos em Taubaté e região.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <a href="#home">Início</a>
+                    <a href="#products">Produtos</a>
+                    <a href="#about">Sobre Nós</a>
+                    <a href="#contact">Contato</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categorias</h3>
+                    <a href="#">Chuveiros</a>
+                    <a href="#">Lâmpadas</a>
+                    <a href="#">Lustres</a>
+                    <a href="#">Torneiras</a>
+                    <a href="#">Canos e Conexões</a>
+                    <a href="#">Ferramentas</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Chiquinha De Mattos, 92 - Centro, Taubaté/SP</p>
+                    <p><i class="fas fa-phone"></i> (12) 99257-3744</p>
+                    <p><i class="fas fa-envelope"></i> contato@pimentaeletrica.com.br</p>
+                </div>
             </div>
-            <p>© 2025 Todos os direitos reservados para a mídia TVVALENAREDE</p>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Pimenta Elétrica de Taubaté - Todos os direitos reservados</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Menu mobile toggle
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
         });
         
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-menu').classList.remove('active');
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after click
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                    }
+                }
             });
         });
     </script>
 </body>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J.E.C.S Advogados Associados</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui;
-        }
-
-        :root {
-            --primary: #2A3B47;
-            --secondary: #B38E5D;
-        }
-
-        /* Cabeçalho Principal */
-        .main-header {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem 1.5rem;
-            border-bottom: 3px solid var(--secondary);
-        }
-
-        .main-header h1 {
-            font-size: 2.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0 0 1rem 0;
-            font-weight: bold;
-        }
-
-        .header-logo {
-            max-width: 300px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        body {
-            line-height: 1.6;
-        }
-
-        .navbar {
-            background: var(--primary);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-        }
-
-        .navbar ul {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 8rem 1rem;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-        }
-
-        .service-card {
-            border: 1px solid #ddd;
-            padding: 2rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-        }
-
-        .attorneys {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-            background: #f9f9f9;
-        }
-
-        .attorney-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .quiz-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-            border: 1px solid #ddd;
-        }
-
-        .quiz-step {
-            display: none;
-        }
-
-        .quiz-step.active {
-            display: block;
-        }
-
-        .quiz-option {
-            padding: 1rem;
-            margin: 1rem 0;
-            border: 2px solid var(--primary);
-            cursor: pointer;
-        }
-
-        .contact {
-            background: var(--primary);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .navbar ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            
-            .main-header h1 {
-                font-size: 2rem;
-            }
-
-            .header-logo {
-                max-width: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Foto Advogadas</title>
-</head>
-<body>
-    <img src="https://github.com/tvvalenarede/tv1/raw/main/fotosadvogadas.png" alt="Foto das Advogadas" style="max-width: 100%; height: auto;">
-</body>
-</html>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#services">Áreas de Atuação</a></li>
-            <li><a href="#attorneys">Advogados</a></li>
-            <li><a href="#quiz">Quiz Jurídico</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="home">
-        <h1>Sua Justiça em Primeiro Lugar</h1>
-        <p>50 anos de experiência em soluções jurídicas personalizadas</p>
-    </section>
-
-    <section class="services" id="services">
-        <div class="service-card" onclick="startQuiz('trabalhista')">
-            <h3>Direito Trabalhista</h3>
-            <p>Reclamações trabalhistas, demissões, assédio</p>
-        </div>
-        <div class="service-card" onclick="startQuiz('previdenciario')">
-            <h3>Direito Previdenciário</h3>
-            <p>Aposentadorias, revisões de benefícios</p>
-        </div>
-        <div class="service-card" onclick="startQuiz('familia')">
-            <h3>Direito de Família</h3>
-            <p>Divórcios, pensão alimentícia, guarda de filhos</p>
-        </div>
-    </section>
-
-    <section class="attorneys" id="attorneys">
-        <div class="attorney-card">
-            <img src="https://via.placeholder.com/300x400" alt="Dr. José Eduardo Costa de Souza">
-            <h4>Dr. José Eduardo</h4>
-            <p>Especialista em Direito de Trabalho, Direito de Família e Direito Previdenciário </p>
-        </div>
-        <!-- Adicione mais 5 cards de advogados aqui -->
-    </section>
-
-    <section class="quiz-container" id="quiz">
-        <h2>Quiz Jurídico Inteligente</h2>
-        <div id="quiz-steps">
-            <div class="quiz-step" id="step-1">
-                <p>Você foi demitido nos últimos 6 meses?</p>
-                <div class="quiz-option" onclick="nextStep(1, 'sim')">Sim</div>
-                <div class="quiz-option" onclick="nextStep(1, 'não')">Não</div>
-            </div>
-            <!-- Adicione mais steps conforme necessário -->
-        </div>
-        <div id="quiz-result"></div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2>Agende uma Consulta</h2>
-        <form>
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="E-mail" required>
-            <select>
-                <option>Direito Trabalhista</option>
-                <option>Direito Previdenciário</option>
-                <option>Direito de Família</option>
-            </select>
-            <textarea placeholder="Descreva brevemente seu caso"></textarea>
-            <button>Enviar</button>
-        </form>
-    </section>
-
-    <script>
-        let currentStep = 0;
-        let answers = {};
-
-        function startQuiz(area) {
-            document.getElementById('quiz').scrollIntoView();
-            answers = { area: area };
-            showStep(0);
-        }
-
-        function showStep(step) {
-            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
-            document.getElementById(`step-${step + 1}`).classList.add('active');
-        }
-
-        function nextStep(step, answer) {
-            answers[`step${step}`] = answer;
-            // Adicione aqui a lógica para próxima pergunta ou resultado final
-            showResult();
-        }
-
-        function showResult() {
-            const result = `<h3>Recomendação:</h3>
-                          <p>Com base nas suas respostas, recomendamos:</p>
-                          <p>Advogado Especialista: Dr. José Eduardo</p>
-                          <button>Agendar Consulta</button>`;
-            document.getElementById('quiz-result').innerHTML = result;
-        }
-    </script>
-</body>
-</html>
-
-
 </html>
