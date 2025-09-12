@@ -1,729 +1,179 @@
-
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pimenta Elétrica de Taubaté - Materiais Elétricos e Hidráulicos</title>
-    <meta name="description" content="Loja especializada em materiais elétricos e hidráulicos em Taubaté. Chuveiros, lustres, lâmpadas, torneiras, canos e muito mais.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #FF4500;
-            --secondary: #FFD700;
-            --dark: #1a1a1a;
-            --light: #f8f8f8;
-            --gray: #777;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23FF4500" opacity="0.3"/><circle cx="20" cy="20" r="15" fill="%23FFD700" opacity="0.3"/><circle cx="80" cy="30" r="10" fill="%23007bff" opacity="0.3"/><circle cx="30" cy="70" r="12" fill="%2300cc66" opacity="0.3"/><circle cx="70" cy="80" r="8" fill="%239900cc" opacity="0.3"/></svg>');
-            background-size: cover;
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 60px;
-            margin-right: 10px;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            line-height: 1;
-        }
-        
-        .logo-text span {
-            font-size: 0.9rem;
-            color: white;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1rem;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .cart-icon {
-            background-color: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .cart-icon:hover {
-            background-color: var(--secondary);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23333"/><circle cx="50" cy="50" r="40" fill="%23FF4500" opacity="0.5"/><circle cx="20" cy="20" r="15" fill="%23FFD700" opacity="0.5"/><circle cx="80" cy="30" r="10" fill="%23007bff" opacity="0.5"/><circle cx="30" cy="70" r="12" fill="%2300cc66" opacity="0.5"/><circle cx="70" cy="80" r="8" fill="%239900cc" opacity="0.5"/></svg>');
-            background-size: cover;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-        
-        /* Categories */
-        .categories {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--dark);
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
-            margin: 10px auto;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .category-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .category-icon {
-            background-color: var(--primary);
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .category-content {
-            padding: 20px;
-        }
-        
-        .category-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        /* Featured Products */
-        .featured-products {
-            background-color: #f0f0f0;
-            padding: 60px 0;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .product-img {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #999;
-        }
-        
-        .product-content {
-            padding: 20px;
-        }
-        
-        .product-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .product-price {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-        
-        .product-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background-color: var(--primary);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        
-        .product-btn:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-        
-        /* About */
-        .about {
-            padding: 60px 0;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--gray);
-        }
-        
-        .about-info {
-            background-color: var(--primary);
-            color: white;
-            padding: 30px;
-            border-radius: 8px;
-        }
-        
-        .info-item {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .info-item i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .footer-column p, .footer-column a {
-            color: #ccc;
-            margin-bottom: 10px;
-            display: block;
-            text-decoration: none;
-        }
-        
-        .footer-column a:hover {
-            color: var(--secondary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #333;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #999;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-                justify-content: center;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .cart-icon {
-                margin: 15px auto 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            nav {
-                display: none;
-            }
-            
-            nav.active {
-                display: block;
-                width: 100%;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fenícia Eletrônicos - Taubaté</title>
+  <meta name="description" content="Fenícia Eletrônicos de Taubaté - A melhor assistência e loja de eletrônicos" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    :root{ --accent:#0b63d3; --accent-dark:#0a55b0; --yellow:#ffd24d; --max-width:1200px; }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222}
+    .container{max-width:var(--max-width); margin:0 auto; padding:18px}
+
+    /* Header */
+    header{background:#fff; border-bottom:1px solid #eee}
+    .topbar{display:flex; align-items:center; gap:16px; padding:12px 0}
+    .logo{display:flex; align-items:center; gap:12px}
+    .logo img{height:56px; border-radius:8px; object-fit:cover}
+    .search{flex:1}
+    .search input{width:100%; padding:10px 14px; border-radius:28px; border:1px solid #e6e6e6}
+    .actions{display:flex; gap:12px}
+    .btn{background:var(--accent); color:white; padding:9px 14px; border-radius:8px; text-decoration:none; display:inline-block}
+
+    /* Hero */
+    .hero{position:relative; margin-top:18px; border-radius:12px; overflow:hidden}
+    .hero .bg{display:block; width:100%; height:360px; object-fit:cover}
+    .hero .overlay{position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; padding:28px; gap:20px}
+    .hero .left{max-width:58%}
+    .hero h1{color:#fff; font-size:40px; margin:0 0 8px; text-shadow:0 6px 18px rgba(0,0,0,0.35)}
+    .hero p{color:#f0f6ff; font-size:18px; margin:0 0 14px}
+    .cta{display:flex; gap:12px}
+    .cta a{background:var(--yellow); color:#0a2b3a; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:600}
+    .contact{background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; color:#fff}
+
+    /* Categories */
+    .cats{display:flex; gap:12px; margin:18px 0; flex-wrap:wrap}
+    .cat{background:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 1px 4px rgba(10,10,10,0.04); display:flex; align-items:center; gap:12px}
+
+    /* Products grid */
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; margin:22px 0}
+    .card{background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(10,10,10,0.04); text-align:center}
+    .card img{width:100%; height:180px; object-fit:contain}
+    .price{color:var(--accent-dark); font-weight:700; margin-top:6px}
+
+    /* Gallery */
+    .gallery{margin:26px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px}
+    .gallery img{width:100%; height:140px; object-fit:cover; border-radius:10px}
+
+    footer{background:#0b1b2b; color:#dcecff; padding:28px 0; margin-top:28px}
+    .footer-grid{display:flex; gap:24px; flex-wrap:wrap}
+    .footer-grid > div{min-width:220px}
+    a.footer-link{color:#fff; text-decoration:none}
+
+    /* Responsive */
+    @media (max-width:800px){ .hero .overlay{flex-direction:column; align-items:flex-start} .hero .left{max-width:100%} .hero .bg{height:300px} }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='20' y='25' width='60' height='50' rx='5' fill='%23FFD700'/><circle cx='35' cy='40' r='5' fill='%23FF4500'/><circle cx='50' cy='40' r='5' fill='%23FF4500'/><circle cx='65' cy='40' r='5' fill='%23FF4500'/><path d='M30 60 L70 60 L65 70 L35 70 Z' fill='%23FF4500'/><text x='50' y='20' font-family='Arial' font-size='10' fill='%23FF4500' text-anchor='middle'>PIMENTA</text><text x='50' y='85' font-family='Arial' font-size='8' fill='%23FF4500' text-anchor='middle'>ELÉTRICA</text></svg>" alt="Pimenta Elétrica Logo">
-                <div class="logo-text">
-                    <h1>PIMENTA ELÉTRICA</h1>
-                    <span>Materiais Elétricos e Hidráulicos</span>
-                </div>
-            </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav>
-                <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#products">Produtos</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                    <li>
-                        <div class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+  <header>
+    <div class="container topbar">
+      <div class="logo">
+        <img src="fenicia555.jpg" alt="Fenícia Eletrônicos fachada">
+        <div>
+          <div style="font-weight:700">Fenícia Eletrônicos</div>
+          <small style="color:#666">Assistência & Loja - Taubaté</small>
         </div>
-    </header>
+      </div>
+      <div class="search">
+        <input placeholder="O que você procura? Ex: Película, bateria, carregador...">
+      </div>
+      <div class="actions">
+        <a href="mailto:fenicia.info@gmail.com" class="btn">Contacte-nos</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Materiais Elétricos e Hidráulicos de Qualidade</h2>
-            <p>Tudo para sua obra, reforma e manutenção com os melhores preços de Taubaté e região!</p>
-            <a href="#products" class="btn">Ver Produtos</a>
+  <main class="container">
+    <section class="hero">
+      <img class="bg" src="fenicia555.jpg" alt="Fenícia - fachada da loja">
+      <div class="overlay">
+        <div class="left">
+          <h1>Novo endereço em Taubaté</h1>
+          <p>Fenícia Eletrônicos de Taubaté — Assistência técnica, peças e acessórios. Rua Dona Chiquinha de Mattos, 311 - Centro.</p>
+          <div class="cta">
+            <a href="mailto:fenicia.info@gmail.com">Peça seu orçamento</a>
+            <a href="https://api.whatsapp.com/send?phone=5512993653636" style="background:transparent; color:white; border:2px solid rgba(255,255,255,0.18);">WhatsApp</a>
+          </div>
         </div>
+        <div class="contact">
+          <div style="font-weight:700">Horário:</div>
+          <div>Seg - Sex: 09:00 - 18:00<br>Sáb: 09:00 - 13:00</div>
+          <div style="margin-top:8px">Telefone: (12) 3635-5777 / (12) 99636-3636</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Categories -->
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Categorias de Produtos</h2>
-            </div>
-            
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-bath"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Chuveiros e Aquecedores</h3>
-                        <p>As melhores marcas com preços imbatíveis</p>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Lâmpadas e Luminárias</h3>
-                        <p>Iluminação para todos os ambientes</p>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Ferramentas e Parafusos</h3>
-                        <p>Complete sua caixa de ferramentas</p>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-faucet"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Hidráulica</h3>
-                        <p>Torneiras, canos e conexões</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="cats">
+      <div class="cat">📱 Telas & Displays</div>
+      <div class="cat">🔋 Baterias & Carregadores</div>
+      <div class="cat">🎧 Acessórios</div>
+      <div class="cat">🛠 Assistência Técnica</div>
+      <div class="cat">💻 Informática</div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured-products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Produtos em Destaque</h2>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-shower"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Chuveiro Elétrico 220V</h3>
-                        <p>Chuveiro de alta performance com controle de temperatura</p>
-                        <div class="product-price">R$ 129,90</div>
-                        <a href="#" class="product-btn">Comprar Agora</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Lâmpada LED 9W</h3>
-                        <p>Economia de energia com alta luminosidade</p>
-                        <div class="product-price">R$ 14,90</div>
-                        <a href="#" class="product-btn">Comprar Agora</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Ventilador de Teto</h3>
-                        <p>Moderno e silencioso para todos os ambientes</p>
-                        <div class="product-price">R$ 249,90</div>
-                        <a href="#" class="product-btn">Comprar Agora</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-faucet"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Torneira para Cozinha</h3>
-                        <p>Design moderno com acabamento cromado</p>
-                        <div class="product-price">R$ 89,90</div>
-                        <a href="#" class="product-btn">Comprar Agora</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#" class="btn">Ver Todos os Produtos</a>
-            </div>
+    <section>
+      <h2 style="margin:6px 0">Produtos em destaque</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="fenicia22.jpg" alt="produto 1">
+          <div style="margin-top:6px">Kit com 3 Películas de Vidro para Lente</div>
+          <div class="price">R$ 14,90</div>
         </div>
+        <div class="card">
+          <img src="fenicia22.jpg" alt="produto 2">
+          <div style="margin-top:6px">Tela Display LG</div>
+          <div class="price">Produto indisponível</div>
+        </div>
+        <div class="card">
+          <img src="fenicia22.jpg" alt="produto 3">
+          <div style="margin-top:6px">Power Bank 20000 mAh</div>
+          <div class="price">R$ 119,90</div>
+        </div>
+        <div class="card">
+          <img src="fenicia22.jpg" alt="produto 4">
+          <div style="margin-top:6px">Caixa de Som BomBox</div>
+          <div class="price">R$ 89,90</div>
+        </div>
+      </div>
     </section>
 
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre Nossa Loja</h2>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Pimenta Elétrica de Taubaté</h2>
-                    <p>Há mais de 15 anos no mercado, a Pimenta Elétrica é referência em materiais elétricos e hidráulicos em Taubaté e região. Oferecemos produtos de qualidade com os melhores preços.</p>
-                    <p>Nossa missão é fornecer soluções completas para sua casa, obra ou empresa, com atendimento especializado e produtos das melhores marcas do mercado.</p>
-                    <p>Venha nos fazer uma visita e comprove nossa qualidade e variedade de produtos!</p>
-                </div>
-                
-                <div class="about-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Rua Chiquinha De Mattos, 92 - Centro - Taubaté/SP</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <p>(12) 99257-3744</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <p>Segunda a Sexta: 8h às 18h | Sábado: 8h às 13h</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-truck"></i>
-                        <p>Entregamos para toda a região</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section>
+      <h2 style="margin:6px 0">Galeria</h2>
+      <p>Imagens do catálogo e produtos — role em dispositivos móveis.</p>
+      <div class="gallery">
+        <img src="fenicia22.jpg" alt="galeria 1">
+        <img src="fenicia22.jpg" alt="galeria 2">
+        <img src="fenicia22.jpg" alt="galeria 3">
+        <img src="fenicia22.jpg" alt="galeria 4">
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Pimenta Elétrica</h3>
-                    <p>Sua loja especializada em materiais elétricos e hidráulicos em Taubaté e região.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <a href="#home">Início</a>
-                    <a href="#products">Produtos</a>
-                    <a href="#about">Sobre Nós</a>
-                    <a href="#contact">Contato</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Categorias</h3>
-                    <a href="#">Chuveiros</a>
-                    <a href="#">Lâmpadas</a>
-                    <a href="#">Lustres</a>
-                    <a href="#">Torneiras</a>
-                    <a href="#">Canos e Conexões</a>
-                    <a href="#">Ferramentas</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Rua Chiquinha De Mattos, 92 - Centro, Taubaté/SP</p>
-                    <p><i class="fas fa-phone"></i> (12) 99257-3744</p>
-                    <p><i class="fas fa-envelope"></i> contato@pimentaeletrica.com.br</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Pimenta Elétrica de Taubaté - Todos os direitos reservados TVVALENAREDE CONTATO 12-99769-0407</p>
-            </div>
-        </div>
-    </footer>
+  </main>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu after click
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                    }
-                }
-            });
-        });
-    </script>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Fenícia Eletrônicos</strong>
+          <div style="margin-top:6px">Rua Dona Chiquinha de Mattos, 311 - Centro, Taubaté - SP</div>
+          <div style="margin-top:6px">Email: <a class="footer-link" href="mailto:fenicia.info@gmail.com">fenicia.info@gmail.com</a></div>
+          <div style="margin-top:6px">WhatsApp: (12) 99636-3636</div>
+        </div>
+        <div>
+          <strong>Atendimento</strong>
+          <ul style="padding-left:18px; margin:8px 0 0 0">
+            <li>Assistência técnica para celulares</li>
+            <li>Peças e componentes</li>
+            <li>Venda de acessórios</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Mapa</strong>
+          <div style="margin-top:6px"><a class="footer-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Dona+Chiquinha+de+Mattos+311+Taubat%C3%A9" target="_blank">Abrir no Google Maps</a></div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px; font-size:13px; color:#9fb8db">&copy; 2025 Fenícia Eletrônicos. Desenvolvido para marketing e apresentação.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const input = document.querySelector('.search input');
+      if(input) input.addEventListener('keypress', e => { if(e.key === 'Enter') alert('Busca: ' + input.value); });
+    });
+  </script>
 </body>
 </html>
