@@ -7,7 +7,12 @@
   <meta name="description" content="Fenícia Eletrônicos de Taubaté - A melhor assistência e loja de eletrônicos" />
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <style>
-    :root{ --accent:#0b63d3; --accent-dark:#0a55b0; --yellow:#ffd24d; --max-width:1200px; }
+    :root{ 
+      --accent:#0b63d3; 
+      --accent-dark:#0a55b0; 
+      --yellow:#ffd24d; 
+      --max-width:1200px; 
+    }
     *{box-sizing:border-box}
     body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222}
     .container{max-width:var(--max-width); margin:0 auto; padding:18px}
@@ -39,13 +44,24 @@
 
     /* Products grid */
     .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; margin:22px 0}
-    .card{background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(10,10,10,0.04); text-align:center}
+    .card{background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(10,10,10,0.04); text-align:center; cursor:pointer; transition:transform 0.3s ease}
+    .card:hover{transform:translateY(-5px)}
     .card img{width:100%; height:180px; object-fit:contain}
     .price{color:var(--accent-dark); font-weight:700; margin-top:6px}
 
     /* Gallery */
     .gallery{margin:26px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px}
-    .gallery img{width:100%; height:140px; object-fit:cover; border-radius:10px}
+    .gallery img{width:100%; height:140px; object-fit:cover; border-radius:10px; cursor:pointer; transition:transform 0.3s ease}
+    .gallery img:hover{transform:scale(1.05)}
+
+    /* Modal */
+    .modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center}
+    .modal.active{display:flex}
+    .modal-content{max-width:90%; max-height:90%; object-fit:contain}
+    .modal-close{position:absolute; top:20px; right:30px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; z-index:1001}
+    .modal-nav{position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.2); color:#fff; border:none; font-size:24px; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center}
+    .modal-prev{left:20px}
+    .modal-next{right:20px}
 
     footer{background:#0b1b2b; color:#dcecff; padding:28px 0; margin-top:28px}
     .footer-grid{display:flex; gap:24px; flex-wrap:wrap}
@@ -53,7 +69,14 @@
     a.footer-link{color:#fff; text-decoration:none}
 
     /* Responsive */
-    @media (max-width:800px){ .hero .overlay{flex-direction:column; align-items:flex-start} .hero .left{max-width:100%} .hero .bg{height:300px} }
+    @media (max-width:800px){ 
+      .hero .overlay{flex-direction:column; align-items:flex-start} 
+      .hero .left{max-width:100%} 
+      .hero .bg{height:300px} 
+      .topbar{flex-direction:column; align-items:flex-start}
+      .search{width:100%}
+      .modal-nav{width:40px; height:40px; font-size:18px}
+    }
   </style>
 </head>
 <body>
@@ -106,23 +129,23 @@
     <section>
       <h2 style="margin:6px 0">Produtos em destaque</h2>
       <div class="grid">
-        <div class="card">
-          <img src="foto1.jpg" alt="produto 1">
+        <div class="card" data-image="fe1.jpg">
+          <img src="fe1.jpg" alt="Kit com 3 Películas de Vidro para Lente">
           <div style="margin-top:6px">Kit com 3 Películas de Vidro para Lente</div>
           <div class="price">R$ 14,90</div>
         </div>
-        <div class="card">
-          <img src="foto2.jpg" alt="produto 2">
+        <div class="card" data-image="fe2.jpg">
+          <img src="fe2.jpg" alt="Tela Display LG">
           <div style="margin-top:6px">Tela Display LG</div>
           <div class="price">Produto indisponível</div>
         </div>
-        <div class="card">
-          <img src="foto3.jpg" alt="produto 3">
+        <div class="card" data-image="fe3.jpg">
+          <img src="fe3.jpg" alt="Power Bank 20000 mAh">
           <div style="margin-top:6px">Power Bank 20000 mAh</div>
           <div class="price">R$ 119,90</div>
         </div>
-        <div class="card">
-          <img src="foto4.jpg" alt="produto 4">
+        <div class="card" data-image="fe4.jpg">
+          <img src="fe4.jpg" alt="Caixa de Som BomBox">
           <div style="margin-top:6px">Caixa de Som BomBox</div>
           <div class="price">R$ 89,90</div>
         </div>
@@ -133,14 +156,22 @@
       <h2 style="margin:6px 0">Galeria</h2>
       <p>Imagens do catálogo e produtos — role em dispositivos móveis.</p>
       <div class="gallery">
-        <img src="foto5.jpg" alt="galeria 1">
-        <img src="foto6.jpg" alt="galeria 2">
-        <img src="foto7.jpg" alt="galeria 3">
-        <img src="foto8.jpg" alt="galeria 4">
+        <img src="fe5.jpg" alt="galeria 1" data-image="fe5.jpg">
+        <img src="fe6.jpg" alt="galeria 2" data-image="fe6.jpg">
+        <img src="fe7.jpg" alt="galeria 3" data-image="fe7.jpg">
+        <img src="fe8.jpg" alt="galeria 4" data-image="fe8.jpg">
       </div>
     </section>
 
   </main>
+
+  <!-- Modal para visualização de imagens -->
+  <div class="modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <button class="modal-nav modal-prev" id="modalPrev">&#10094;</button>
+    <img class="modal-content" id="modalImage" src="" alt="Imagem ampliada">
+    <button class="modal-nav modal-next" id="modalNext">&#10095;</button>
+  </div>
 
   <footer>
     <div class="container">
@@ -172,9 +203,75 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
+    document.addEventListener('DOMContentLoaded', () => {
+      // Busca
       const input = document.querySelector('.search input');
-      if(input) input.addEventListener('keypress', e => { if(e.key === 'Enter') alert('Busca: ' + input.value); });
+      if(input) input.addEventListener('keypress', e => { 
+        if(e.key === 'Enter') alert('Busca: ' + input.value); 
+      });
+
+      // Modal de imagens
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalClose = document.getElementById('modalClose');
+      const modalPrev = document.getElementById('modalPrev');
+      const modalNext = document.getElementById('modalNext');
+      
+      // Coletar todas as imagens que podem ser ampliadas
+      const galleryImages = document.querySelectorAll('.gallery img, .card img');
+      let currentImageIndex = 0;
+      let images = [];
+      
+      // Preparar array de imagens e adicionar event listeners
+      galleryImages.forEach((img, index) => {
+        images.push(img.src);
+        
+        img.addEventListener('click', () => {
+          currentImageIndex = index;
+          modalImage.src = img.src;
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Previne scroll da página
+        });
+      });
+      
+      // Fechar modal
+      modalClose.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Navegação entre imagens
+      modalPrev.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        modalImage.src = images[currentImageIndex];
+      });
+      
+      modalNext.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        modalImage.src = images[currentImageIndex];
+      });
+      
+      // Fechar modal ao clicar fora da imagem
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+      
+      // Navegação por teclado
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        } else if (e.key === 'ArrowLeft') {
+          modalPrev.click();
+        } else if (e.key === 'ArrowRight') {
+          modalNext.click();
+        }
+      });
     });
   </script>
 </body>
